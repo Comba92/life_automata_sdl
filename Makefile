@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -IC:\mingw64\include\ -LC:\mingw64\lib -w -Wl,-subsystem,windows
+CFLAGS = -I"libs/include" -L"libs/lib" -O3 -Wall -Wl,-subsystem,windows
 LINKER = -lmingw32 -lSDL2main -lSDL2
 OUT = -o "life.exe"
 

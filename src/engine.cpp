@@ -20,6 +20,7 @@ Engine::Engine(int w, int h)
       exit(1);
     }
 
+    // VSync is necessary for good performance, without it the rendering loop will try to render infinite fps
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC);
 
     if ( !renderer )
@@ -29,6 +30,11 @@ Engine::Engine(int w, int h)
     }
 
     texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_STREAMING, w, h);
+
+    if ( !texture ) {
+      SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "%s", SDL_GetError());
+      exit(1);
+    }
 }
 
 Engine::~Engine()
