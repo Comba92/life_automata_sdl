@@ -69,6 +69,11 @@ int main(int, char**)
               computeGens = (computeGens == SDL_TRUE) ? SDL_FALSE : SDL_TRUE;
               timer = SDL_GetTicks();
             }
+
+            if (event.key.keysym.scancode == SDL_SCANCODE_Q || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
+            {
+              loop = SDL_FALSE;
+            }
             break;
 
           case SDL_WINDOWEVENT:
@@ -84,6 +89,7 @@ int main(int, char**)
         }
       }
 
+      // TODO: understand this
       if( computeGens && timer + ANIMATION_INTERVAL <= SDL_GetTicks() )
       {
         board.next_generation();
