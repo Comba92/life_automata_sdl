@@ -6,8 +6,8 @@ using namespace std;
 
 bool is_valid_point(std::pair<int,int> p);
 
-static const int DIRECTIONS[9][2] = {
-  {0, 1}, {0, -1}, {1, 0}, {-1, 0}, {-1, 1}, {1, -1}, {1, 1}, {-1, -1}, {0, 0}
+static const int DIRECTIONS[8][2] = {
+  {0, 1}, {0, -1}, {1, 0}, {-1, 0}, {-1, 1}, {1, -1}, {1, 1}, {-1, -1}
 };
 
 class SparseMatrix 
