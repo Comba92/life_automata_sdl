@@ -13,6 +13,14 @@ const SDL_Color colorLine = {44, 44, 44, 255}; // Dark grey
 const SDL_Color colorGhostCursor = {44, 44, 44, 255}; // Barely grey
 const SDL_Color colorActiveBlock = {255, 255, 255, 255}; // White
 
+void DrawRowsAndCols(Engine &engine)
+{
+  engine.SetColor(colorLine);
+  for (int x = BLOCK_SIZE; x <= SCREEN_WIDTH; x += BLOCK_SIZE)
+    engine.DrawLine({x, 0}, {x, SCREEN_HEIGHT});
+  for (int y = BLOCK_SIZE; y <= SCREEN_HEIGHT; y += BLOCK_SIZE)
+    engine.DrawLine({0, y}, {SCREEN_WIDTH, y});
+}
 
 int main(int, char**) 
 {
@@ -26,6 +34,7 @@ int main(int, char**)
     SDL_bool computeGens = SDL_FALSE;
     unsigned int timer = 0;
 
+    // make better mouse handling
     SDL_FRect rGhostCursor = { SCREEN_WIDTH, SCREEN_HEIGHT, BLOCK_SIZE, BLOCK_SIZE };
 
     while(loop) 
@@ -99,12 +108,7 @@ int main(int, char**)
       engine.SetColor(colorBackground);
       engine.ClearScreen();
 
-      engine.SetColor(colorLine);
-
-      for( int x=BLOCK_SIZE; x <= SCREEN_WIDTH; x += BLOCK_SIZE )
-        engine.DrawLine( {x, 0}, {x, SCREEN_HEIGHT} );
-      for( int y=BLOCK_SIZE; y <= SCREEN_HEIGHT; y += BLOCK_SIZE )
-        engine.DrawLine( {0, y}, {SCREEN_WIDTH, y} );
+      DrawRowsAndCols(engine);
 
       if(mouseHover)
       {
@@ -113,7 +117,6 @@ int main(int, char**)
       }
 
       engine.SetColor(colorActiveBlock);
-
       std::vector<SDL_FRect> rActiveRects;
       for(auto p : board.points) 
       {

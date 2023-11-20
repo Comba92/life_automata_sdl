@@ -20,7 +20,7 @@ bool SparseMatrix::delete_point(std::pair<int, int> p)
 
 bool SparseMatrix::is_present(std::pair<int, int> p)
 {
-  return points.count(p) > 0;
+  return points.find(p) != points.end();
 }
 
 void SparseMatrix::clear_points()
