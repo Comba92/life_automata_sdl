@@ -11,7 +11,7 @@ build/engine.o: src/engine.cpp
 	${CC} ${CFLAGS} -c "src/engine.cpp" -o "build/engine.o" ${LINKER}
 build/logic.o: src/logic.cpp
 	${CC} ${CFLAGS} -c "src/logic.cpp" -o "build/logic.o" ${LINKER}
-build/main.o: src/main.cpp
+build/main.o: src/main.cpp src/definitions.hpp
 	${CC} ${CFLAGS} -c "src/main.cpp" -o "build/main.o" ${LINKER}
 
 clean:

@@ -15,7 +15,6 @@ class SparseMatrix
 public:
   set<pair<int,int>> points;
   
-
   bool add_point(pair<int, int> p);
   bool delete_point(pair<int, int> p);
   bool is_present(pair<int, int> p);
