@@ -1,4 +1,4 @@
-# Life Automata
+# ⬛⬜ Life Automata
 C implementation of Conway's game of life with SDL2.
 It's an old project from August 2022, which I never polished and published. 
 Now it lives again.
