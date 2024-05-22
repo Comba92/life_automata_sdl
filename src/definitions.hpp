@@ -7,4 +7,4 @@ inline constexpr int BLOCK_SIZE = 20;
 
 inline constexpr int COLS = SCREEN_WIDTH / BLOCK_SIZE;
 inline constexpr int ROWS = SCREEN_HEIGHT / BLOCK_SIZE;
-inline constexpr unsigned int ANIMATION_FRAMES_DELAY = 30;
+inline constexpr unsigned int ANIMATION_FRAMES_DELAY = 25;

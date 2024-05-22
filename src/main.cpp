@@ -67,12 +67,11 @@ int main(int, char**) {
 
   SDL_bool shouldClose = SDL_FALSE;
 
-  SDL_FRect rGhostCursor = {SCREEN_WIDTH, SCREEN_HEIGHT, BLOCK_SIZE, BLOCK_SIZE};
   CursorState mouse = {
       .isHovering = SDL_FALSE,
       .isClicking = SDL_FALSE,
       .addingMode = SDL_FALSE,
-      rGhostCursor,
+      .rGhostCursor = (SDL_FRect) {SCREEN_WIDTH/2, SCREEN_HEIGHT/2, BLOCK_SIZE, BLOCK_SIZE},
   };
 
   SDL_bool computeGens = SDL_FALSE;
@@ -97,20 +96,19 @@ int main(int, char**) {
       case SDL_KEYDOWN:
         if( event.key.keysym.scancode == SDL_SCANCODE_SPACE )
           computeGens = (computeGens == SDL_TRUE) ? SDL_FALSE : SDL_TRUE;
-        
 
         if ( event.key.keysym.scancode == SDL_SCANCODE_Q ||
         event.key.keysym.scancode == SDL_SCANCODE_ESCAPE ) 
           shouldClose = SDL_TRUE;
         break;
 
-      case SDL_QUIT: 
+      case SDL_QUIT:
         shouldClose = SDL_TRUE; 
         break;
       }
     }
 
-    if( computeGens && timer >= ANIMATION_FRAMES_DELAY) {
+    if( computeGens && timer >= ANIMATION_FRAMES_DELAY ) {
       timer = 0;
       board.next_generation();
     }
@@ -122,7 +120,7 @@ int main(int, char**) {
 
     if(mouse.isHovering) {
       engine.SetColor(colorGhostCursor);
-      engine.FillRect(rGhostCursor);
+      engine.FillRect(mouse.rGhostCursor);
     }
 
     engine.SetColor(colorActiveBlock);
